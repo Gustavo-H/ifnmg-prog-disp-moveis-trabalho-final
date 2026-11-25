@@ -1,10 +1,11 @@
 import { useRef, useState } from 'react';
-import { Alert, KeyboardAvoidingView, Platform, ScrollView, TextInputInstance, View } from 'react-native';
+import { KeyboardAvoidingView, Platform, ScrollView, TextInputInstance, View } from 'react-native';
 
 import { Button } from '../../components/Button';
 import { Header } from '../../components/Header';
 import { Input } from '../../components/Input';
 import { useProducts } from '../../context/ProductContext';
+import { showAlert } from '../../global/alert';
 import { parsePrice } from '../../global/format';
 import { style } from './styles';
 
@@ -52,7 +53,7 @@ export default function Cadastro() {
         price: parsePrice(price),
         quantity: Number(quantity),
       });
-      Alert.alert('Produto cadastrado', `${name.trim()} foi adicionado ao estoque.`);
+      showAlert('Produto cadastrado', `${name.trim()} foi adicionado ao estoque.`);
       setName('');
       setPrice('');
       setQuantity('');

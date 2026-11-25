@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import {
-  Alert,
   KeyboardAvoidingView,
   Platform,
   ScrollView,
@@ -16,6 +15,7 @@ import { Header } from '../../components/Header';
 import { Input } from '../../components/Input';
 import { StatusBadge } from '../../components/StatusBadge';
 import { useProducts } from '../../context/ProductContext';
+import { showAlert } from '../../global/alert';
 import { style } from './styles';
 
 interface ExitErrors {
@@ -65,7 +65,7 @@ export default function Saida() {
     setSaving(true);
     try {
       await registerExit(selected.id, Number(quantity));
-      Alert.alert(
+      showAlert(
         'Baixa registrada',
         `${quantity} un. de ${selected.name}. Novo saldo: ${selected.quantity - Number(quantity)}.`,
       );
